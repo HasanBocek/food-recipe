@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const employeeSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: { type: String, uniqe: true, required: true }, // kullanıcı adı
     name: { type: String, required: true }, // tam isim
     surnmae: { type: String, required: true }, // soyisim
@@ -23,4 +23,4 @@ const employeeSchema = new mongoose.Schema({
     createdAt: { type: Date, required: true, default: Date.now() } // hesap oluşturulma tarihi
 });
 
-module.exports = mongoose.model("Employee", employeeSchema);
+module.exports = mongoose.model("User", userSchema);
