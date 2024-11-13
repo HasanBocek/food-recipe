@@ -47,6 +47,7 @@ const recipeSchema = new mongoose.Schema({
             date: { type: Date, require: true, default: Date.now() }, // tarih
         }],
     }],
+    video: { type: String, required: false }, // hazırlanış videosu url
     gallery: [{ type: String, required: false }], // galeri resimler url
     slug: { type: String, require: true }, // kebap title: url
     time: { type: Number, required: true }, // hazırlanma süresi
