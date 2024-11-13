@@ -32,14 +32,14 @@ const recipeSchema = new mongoose.Schema({
     imageUrl: { type: String, required: false }, // thumbnail url
     rating: { type: Number, required: false, }, // oylama
     comments: [{ // yorumlar
-        user: { type: mongoose.Schema.Types.ObjectId, required: true }, // yorum sahibi kullanıcı _id
+        user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // yorum sahibi kullanıcı _id
         content: { type: String, required: true }, // içerik
         date: { type: Date, require: true, default: Date.now() }, // tarih
         likes: [{ // beğenmeler
-            user: { type: mongoose.Schema.Types.ObjectId, required: true }, // beğenen kullanıcı _id
+            user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // beğenen kullanıcı _id
         }],
         replies: [{ // yanıtlar
-            user: { type: mongoose.Schema.Types.ObjectId, required: true }, // yanıtlayan kullanıcı _id
+            user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // yanıtlayan kullanıcı _id
             content: { type: String, required: true }, // içerik
             date: { type: Date, require: true, default: Date.now() }, // tarih
         }],
@@ -48,7 +48,7 @@ const recipeSchema = new mongoose.Schema({
     slug: { type: String, require: true }, // kebap title: url
     time: { type: Number, required: true }, // hazırlanma süresi
     difficulty: { type: String, required: true }, // zorluk
-    author: { type: mongoose.Schema.Types.ObjectId, required: true }, // gönderen _id
+    author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // gönderen _id
     createdAt: { type: Date, require: true, default: Date.now() }, // yaratılış tarih
     likes: { type: Number, required: false }, // beğenme sayısı
     favorite: { type: Number, required: false }, // favori sayısı
