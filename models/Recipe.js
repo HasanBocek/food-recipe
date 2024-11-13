@@ -30,7 +30,10 @@ const recipeSchema = new mongoose.Schema({
         fat: { type: String, required: false } // yağ
     },
     imageUrl: { type: String, required: false }, // thumbnail url
-    rating: { type: Number, required: false, }, // oylama
+    ratings: [{ // oylamalar
+        rate: { type: Number, required: false, min: 1, max: 5 }, // 5 üzerinden oy
+        user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // oylayan kullanıcı _id
+    }],
     comments: [{ // yorumlar
         user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" }, // yorum sahibi kullanıcı _id
         content: { type: String, required: true }, // içerik
